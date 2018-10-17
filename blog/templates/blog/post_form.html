@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "blog/base.html" %}
+{%  block content %}
+    <form action="POST" class="post-form">
+        {% csrf_token%}
+        {{ form.as_p }}
+        <button class="btn btn-default" type="submit" name="button">Save</button>
+    </form>
 
-</body>
-</html>
+    <script>
+        var editor = new MediumEditor('.editable');
+    </script>
+    
+{% endblock %}
