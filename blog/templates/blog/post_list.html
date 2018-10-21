@@ -1,13 +1,14 @@
 {% extends "blog/base.html" %}
 {%  block content %}
+    <h1>Post list</h1>
     <div class="centerstage">
-        {% for post in post_list %}
+        {% for post in posts %}
             <div class="post">
-                <h1><a href="{% url 'detail_post' pk=post.pk  %}">{{ post.tittle }}</a> </h1>
+                <h1><a href="{% url 'post_detail' pk=post.pk  %}">{{ post.title }}</a> </h1>
                 <div class="date">
-                    <p>Publish on: {{ post.published|date: "D M Y" }}</p>
+                    <p>Publish on: {{ post.publish_date|date:"Y-m-d" }}</p>
                 </div>
-                <a href="{% url 'detail_post' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comment.count }}</a>
             </div>
         {% endfor %}
     </div>

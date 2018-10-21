@@ -1,17 +1,17 @@
 {% extends 'blog/base.html' %}
 
-{% block body %}
+{% block content %}
     <div class="jumbotron">
         <h2>Pleas login:</h2>
         <h3>(Must be SuperUser, pleas check with the site admin</h3>
         {% if form.errors %}
             <p>Your username or password didn't match, pleas try again! </p>
         {% endif %}
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="btn btn-primary" value="login" action="submit">
-        <input type="hidden" value="{{ next }}" name="next">
-    </form>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary" value="login" action="submit">Login</button>
+                <input type="hidden" value="{{ next }}" name="next">
+            </form>
     </div>
 {% endblock %}
